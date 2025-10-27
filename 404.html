@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Page Not Found — LocalGig{% endblock %}
+{% block content %}
+<section class="py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4 p-md-5 text-center">
+
+          <div class="mb-3 d-flex justify-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="56" height="56" viewBox="0 0 64 64"
+                 class="text-warning flex-shrink-0 d-block"
+                 role="img" aria-label="Warning">
+              <path d="M32 4 L60 56 H4 Z" fill="currentColor"/>
+              <rect x="29" y="20" width="6" height="22" rx="3" fill="#fff"/>
+              <circle cx="32" cy="48" r="3" fill="#fff"/>
+            </svg>
+          </div>
+
+          <div class="display-1 fw-bold"
+               style="line-height:1;background:linear-gradient(90deg,#6f42c1,#0d6efd);
+                      -webkit-background-clip:text;background-clip:text;
+                      -webkit-text-fill-color:transparent;color:transparent;">
+            404
+          </div>
+
+          <h1 class="h3 mt-2">Page Not Found</h1>
+          <p class="text-muted mb-4">
+            Sorry, the page you are looking for doesn’t exist or may have been moved.
+            <br>
+            <small>Requested URL: <code class="user-select-all">{{ req_path }}</code></small>
+          </p>
+
+          <div class="d-grid d-sm-flex gap-2 justify-content-center">
+            <a class="btn btn-primary btn-lg px-4" href="/">Back to Home</a>
+          </div>
+
+          <hr class="my-4">
+          <p class="mb-2 fw-semibold">What you can try:</p>
+          <ul class="list-unstyled text-muted small mb-0">
+            <li class="mb-1">• Check if the URL is misspelled.</li>
+            <li class="mb-1">• Return to the homepage and navigate from there.</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
