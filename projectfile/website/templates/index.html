@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LocalGig - Discover Local Music Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="Static\Style\css\style.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-music-note-beamed me-2"></i>LocalGig
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="event-detail.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="create-event.html">Create Event</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking-history.html">My Bookings</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <span class="text-white me-3 d-none d-md-block">Guest User</span>
+                    <a href="#" class="btn btn-outline-light btn-sm">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Discover Live Music Near You</h1>
+            <p class="lead mb-4">Find and book tickets for local gigs, concerts, and festivals</p>
+            <a href="#events" class="btn btn-primary btn-lg px-4">Explore Events</a>
+        </div>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="container category-filter text-center my-4">
+        <h2>Browse by Genre</h2>
+        <div>
+            <button class="btn category-btn btn-outline-primary active">All</button>
+            <button class="btn category-btn btn-outline-primary">Rock</button>
+            <button class="btn category-btn btn-outline-primary">Jazz</button>
+            <button class="btn category-btn btn-outline-primary">Indie</button>
+            <button class="btn category-btn btn-outline-primary">Electronic</button>
+        </div>
+    </div>
+
+    <!-- Events Section -->
+    <div class="container" id="events">
+        <h2 class="mb-4">Upcoming Events</h2>
+        <div class="row">
+            <!-- Open Event -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card event-card">
+                    <span class="event-status status-open">Open</span>
+                    <img src="https://australianmusician.com.au/wp-content/uploads/2023/07/simple_minds_-_hamburg_-_c_thorsten_samesch_-_toddevision_0075-1024x683.jpg" class="card-img-top" alt="Rock Concert" />
+                    <div class="card-body">
+                        <h5 class="card-title">Summer Rock Festival</h5>
+                        <p class="text-muted"><i class="bi bi-geo-alt"></i> Riverside Park</p>
+                        <p class="text-muted"><i class="bi bi-calendar-event"></i> Sat, Jun 12 · 7 PM</p>
+                        <p class="card-text">Annual rock festival with top local bands.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-primary">Rock</span>
+                            <a href="event-detail.html" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sold Out Event -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card event-card">
+                    <span class="event-status status-soldout">Sold Out</span>
+                    <img src="https://media.timeout.com/images/102442169/750/562/image.jpg" class="card-img-top" alt="Jazz Night" />
+                    <div class="card-body">
+                        <h5 class="card-title">Smooth Jazz Night</h5>
+                        <p class="text-muted"><i class="bi bi-geo-alt"></i> The Blue Note Club</p>
+                        <p class="text-muted"><i class="bi bi-calendar-event"></i> Fri, May 10 · 8 PM</p>
+                        <p class="card-text">Evening of smooth jazz by local legends.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-primary">Jazz</span>
+                            <a href="event-detail.html" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inactive Event -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card event-card">
+                    <span class="event-status status-inactive">Inactive</span>
+                    <img src="https://images.thewest.com.au/publication/C-17394147/2edff401069525793bc3a686b96476b3ffbc9bbe-16x9-x0y92w1772h997.jpg?imwidth=810&impolicy=wan_v3" class="card-img-top" alt="Indie Concert" />
+                    <div class="card-body">
+                        <h5 class="card-title">Indie Showcase</h5>
+                        <p class="text-muted"><i class="bi bi-geo-alt"></i> The Underground</p>
+                        <p class="text-muted"><i class="bi bi-calendar-event"></i> Sat, Apr 5 · 6 PM</p>
+                        <p class="card-text">Showcase of emerging indie artists.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-primary">Indie</span>
+                            <a href="event-detail.html" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About LocalGig</h5>
+                    <p>Connecting music lovers with local artists and venues.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="event-detail.html" class="text-white">Events</a></li>
+                        <li><a href="create-event.html" class="text-white">Create Event</a></li>
+                        <li><a href="booking-history.html" class="text-white">My Bookings</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 bg-light" />
+            <p class="text-center mb-0">© 2023 LocalGig. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
