@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}LocalGig - Discover Local Music Events{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <div class="hero-section py-5 text-white text-center mb-5" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Discover Live Music Near You</h1>
+            <p class="lead mb-4">Find and book tickets for local gigs, concerts, and festivals</p>
+            <a href="#events" class="btn btn-primary btn-lg px-4">Explore Events</a>
+        </div>
+    </div>
+
+    <!-- Genre Filters -->
+    <div class="container category-filter text-center my-4">
+        <h2>Browse by Genre</h2>
+        <div class="btn-group flex-wrap gap-2 justify-content-center" role="group">
+            <a href="{{ url_for('main.index') }}" 
+               class="btn category-btn btn-outline-primary {% if not selected_genre %}active{% endif %}">
+                All Genres
+            </a>
+            {% for genre in genres %}
+                <a href="{{ url_for('main.index', genre=genre) }}" 
+                   class="btn category-btn btn-outline-primary {% if selected_genre == genre %}active{% endif %}">
+                    {{ genre }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Events Section -->
+    <div class="container" id="events">
+        <h2 class="mb-4">Upcoming Events</h2>
+        
+        {% if events %}
+        <div class="row">
+            {% for event in events %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card event-card position-relative shadow-sm h-100">
+                    <!-- Status Badge -->
+                    <span class="position-absolute top-0 end-0 m-2 px-2 py-1 rounded
+                        {% if event.status == 'Open' %}bg-success text-white
+                        {% elif event.status == 'Sold Out' %}bg-danger text-white
+                        {% elif event.status == 'Inactive' %}bg-secondary text-white
+                        {% elif event.status == 'Cancelled' %}bg-warning text-dark{% endif %}"
+                        style="font-size: 0.75rem; font-weight: bold; z-index: 1;">
+                        {{ event.status }}
+                    </span>
+                    
+                    {% if event.image_url %}
+                        <img src="{{ event.image_url }}" class="card-img-top" alt="{{ event.title }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                        <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <i class="bi bi-music-note-beamed fs-1"></i>
+                        </div>
+                    {% endif %}
+                    
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ event.title }}</h5>
+                        <p class="text-muted mb-1"><i class="bi bi-person"></i> {{ event.artist_name }}</p>
+                        <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> {{ event.venue_name }}</p>
+                        <p class="text-muted mb-2"><i class="bi bi-calendar-event"></i> {{ event.event_date.strftime('%a, %b %d') }} · {{ event.starts_at.strftime('%I:%M %p') }}</p>
+                        <p class="card-text flex-grow-1">{{ event.description[:100] }}{% if event.description|length > 100 %}...{% endif %}</p>
+                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                            <span class="badge bg-primary">{{ event.genre }}</span>
+                            <a href="{{ url_for('events.event_detail', event_id=event.event_id) }}" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert alert-info text-center">
+            <h4>No events found</h4>
+            <p>{% if selected_genre %}No {{ selected_genre }} events{% else %}No upcoming events{% endif %} available at the moment.</p>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('events.create_event') }}" class="btn btn-primary">Create the first event!</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}
